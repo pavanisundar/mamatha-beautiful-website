@@ -1,0 +1,587 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mamatha | A Beautiful World</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #fffaf0;
+            color: #264653;
+            line-height: 1.8;
+        }
+
+        :root {
+            --teal: #176b65;
+            --dark: #153f3c;
+            --gold: #d5a64b;
+            --cream: #fffaf0;
+            --coral: #e89578;
+        }
+
+        header {
+            min-height: 90vh;
+            padding: 25px 8%;
+            background:
+                radial-gradient(circle at top right, #f4d9a0 0, transparent 35%),
+                linear-gradient(135deg, #e0f0e9, #fffaf0 60%, #f9e4d8);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 27px;
+            font-weight: bold;
+            color: var(--teal);
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--dark);
+            margin-left: 20px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            color: var(--coral);
+        }
+
+        .hero {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+            padding: 65px 0;
+        }
+
+        .hero-text {
+            max-width: 650px;
+            animation: appear 1.2s ease;
+        }
+
+        .eyebrow {
+            color: var(--teal);
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(48px, 8vw, 82px);
+            line-height: 1.15;
+            margin: 18px 0;
+            color: var(--dark);
+        }
+
+        h1 span {
+            color: var(--teal);
+            font-style: italic;
+        }
+
+        .hero p {
+            max-width: 550px;
+            color: #526b67;
+            font-size: 16px;
+        }
+
+        .button {
+            display: inline-block;
+            margin-top: 28px;
+            background: var(--teal);
+            color: white;
+            padding: 13px 27px;
+            text-decoration: none;
+            border-radius: 30px;
+            transition: 0.3s;
+        }
+
+        .button:hover {
+            background: var(--dark);
+            transform: translateY(-3px);
+        }
+
+        .hero-art {
+            min-width: 240px;
+            width: 320px;
+            height: 320px;
+            border-radius: 48% 52% 60% 40%;
+            background: linear-gradient(145deg, #176b65, #7aafa0);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 15px 20px 0 #e9cc8c;
+            transform: rotate(3deg);
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .hero-art span {
+            font-size: 110px;
+            transform: rotate(-3deg);
+        }
+
+        section {
+            padding: 80px 8%;
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .section-heading h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(30px, 5vw, 44px);
+            color: var(--dark);
+            margin-bottom: 8px;
+        }
+
+        .section-heading p {
+            color: #6c817b;
+        }
+
+        .about {
+            background: white;
+        }
+
+        .about-box {
+            max-width: 900px;
+            margin: auto;
+            text-align: center;
+            padding: 35px;
+            border: 1px solid #e7d9b8;
+            border-radius: 24px;
+            background: #fffdf8;
+            box-shadow: 0 12px 35px #153f3c0d;
+        }
+
+        .about-box p {
+            margin: 12px 0;
+        }
+
+        .highlight {
+            color: var(--teal);
+            font-weight: 600;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 24px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 22px;
+            padding: 30px 24px;
+            border-bottom: 4px solid var(--gold);
+            box-shadow: 0 8px 25px #153f3c0d;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px #153f3c18;
+        }
+
+        .card .icon {
+            font-size: 38px;
+            margin-bottom: 12px;
+        }
+
+        .card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 23px;
+            margin-bottom: 10px;
+            color: var(--teal);
+        }
+
+        .card p {
+            font-size: 14px;
+            color: #61736f;
+        }
+
+        .education {
+            background: #e8f2ec;
+        }
+
+        .timeline {
+            max-width: 750px;
+            margin: auto;
+        }
+
+        .timeline-item {
+            background: white;
+            margin-bottom: 18px;
+            padding: 24px;
+            border-left: 5px solid var(--gold);
+            border-radius: 0 16px 16px 0;
+        }
+
+        .timeline-item h3 {
+            color: var(--teal);
+            font-size: 19px;
+        }
+
+        .timeline-item p {
+            color: #61736f;
+            font-size: 14px;
+        }
+
+        .family {
+            background: #fffaf0;
+        }
+
+        .family-card {
+            text-align: center;
+            background: white;
+            padding: 30px 20px;
+            border-radius: 24px;
+            box-shadow: 0 8px 25px #153f3c0d;
+        }
+
+        .family-card .icon {
+            font-size: 48px;
+        }
+
+        .family-card h3 {
+            margin-top: 12px;
+            color: var(--teal);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .quote {
+            text-align: center;
+            background: var(--teal);
+            color: white;
+            padding: 75px 10%;
+        }
+
+        .quote blockquote {
+            max-width: 850px;
+            margin: auto;
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(25px, 4vw, 38px);
+            line-height: 1.5;
+        }
+
+        .quote p {
+            color: #f4d9a0;
+            margin-top: 20px;
+        }
+
+        .message {
+            text-align: center;
+            background: #f9e4d8;
+        }
+
+        .message-box {
+            max-width: 750px;
+            margin: auto;
+        }
+
+        .message-box h2 {
+            font-family: 'Playfair Display', serif;
+            color: var(--dark);
+            font-size: 38px;
+            margin-bottom: 20px;
+        }
+
+        footer {
+            text-align: center;
+            background: var(--dark);
+            color: #f8ead0;
+            padding: 25px 15px;
+            font-size: 13px;
+        }
+
+        @keyframes appear {
+            from { opacity: 0; transform: translateY(25px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(3deg); }
+            50% { transform: translateY(-12px) rotate(-2deg); }
+        }
+
+        @media (max-width: 750px) {
+            header {
+                min-height: auto;
+            }
+
+            nav {
+                justify-content: center;
+            }
+
+            nav a {
+                margin: 0 7px;
+                font-size: 12px;
+            }
+
+            .hero {
+                flex-direction: column-reverse;
+                text-align: center;
+                padding: 50px 0;
+            }
+
+            .hero-art {
+                width: 220px;
+                height: 220px;
+                min-width: 220px;
+            }
+
+            .hero-art span {
+                font-size: 80px;
+            }
+
+            .hero p {
+                margin: auto;
+            }
+
+            section {
+                padding: 60px 6%;
+            }
+
+            .about-box {
+                padding: 24px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header id="home">
+        <nav>
+            <div class="logo">Mamatha ♡</div>
+            <div>
+                <a href="#about">About</a>
+                <a href="#education">Education</a>
+                <a href="#talents">Talents</a>
+                <a href="#family">Family</a>
+            </div>
+        </nav>
+
+        <div class="hero">
+            <div class="hero-text">
+                <div class="eyebrow">A woman with a thousand dreams</div>
+                <h1>Hello, I'm<br><span>Mamatha.</span></h1>
+                <p>
+                    A loving mother, a caring wife, a wonderful sister,
+                    a passionate learner, and a woman who believes that
+                    life becomes beautiful when we never stop growing.
+                </p>
+                <a href="#about" class="button">Discover My World ✨</a>
+            </div>
+
+            <div class="hero-art">
+                <span>🌷</span>
+            </div>
+        </div>
+    </header>
+
+    <section class="about" id="about">
+        <div class="section-heading">
+            <h2>A Little About Me</h2>
+            <p>Every little thing makes me who I am.</p>
+        </div>
+
+        <div class="about-box">
+            <p>
+                Welcome to my little corner of the internet!
+                I'm <span class="highlight">Mamatha</span>, a woman
+                who loves learning, creating, caring, and exploring
+                new possibilities.
+            </p>
+
+            <p>
+                After completing my B.Com, I have started a new chapter
+                by joining MCA this month. I'm also learning Java Full
+                Stack through QSpiders and building my interest in the
+                world of IT.
+            </p>
+
+            <p>
+                I love teaching, sharing knowledge, discovering new
+                things, and finding happiness in both little moments
+                and big dreams. I believe it's never too late to learn
+                something new!
+            </p>
+        </div>
+    </section>
+
+    <section class="education" id="education">
+        <div class="section-heading">
+            <h2>My Learning Journey</h2>
+            <p>Growing one step at a time.</p>
+        </div>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <h3>🎓 Bachelor of Commerce — B.Com</h3>
+                <p>A completed chapter that helped build my foundation.</p>
+            </div>
+
+            <div class="timeline-item">
+                <h3>📚 Master of Computer Applications — MCA</h3>
+                <p>Joined this month and excited to explore technology,
+                   programming, and new opportunities.</p>
+            </div>
+
+            <div class="timeline-item">
+                <h3>💻 Java Full Stack — QSpiders</h3>
+                <p>Learning Java and full-stack development while
+                   developing my technical knowledge.</p>
+            </div>
+
+            <div class="timeline-item">
+                <h3>🌱 A Lifelong Learner</h3>
+                <p>Always ready to learn new skills, improve myself,
+                   and turn curiosity into knowledge.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="talents">
+        <div class="section-heading">
+            <h2>My World of Talents</h2>
+            <p>Many interests, one curious heart.</p>
+        </div>
+
+        <div class="cards">
+            <div class="card">
+                <div class="icon">💻</div>
+                <h3>Technology</h3>
+                <p>Exploring the IT field, learning Java Full Stack,
+                   and discovering how technology makes a difference.</p>
+            </div>
+
+            <div class="card">
+                <div class="icon">🍎</div>
+                <h3>Love for Teaching</h3>
+                <p>Enjoying the process of explaining, sharing knowledge,
+                   and helping others understand new things.</p>
+            </div>
+
+            <div class="card">
+                <div class="icon">💃</div>
+                <h3>Dancing</h3>
+                <p>Expressing happiness, energy, and creativity through
+                   movement and music.</p>
+            </div>
+
+            <div class="card">
+                <div class="icon">🍲</div>
+                <h3>Cooking</h3>
+                <p>Creating delicious food and adding love to every
+                   recipe prepared for family.</p>
+            </div>
+
+            <div class="card">
+                <div class="icon">🎨</div>
+                <h3>Drawing</h3>
+                <p>Turning imagination into art and enjoying the beauty
+                   of colours, designs, and creativity.</p>
+            </div>
+
+            <div class="card">
+                <div class="icon">✨</div>
+                <h3>Learning New Things</h3>
+                <p>Trying new activities, exploring ideas, and discovering
+                   hidden talents with an open mind.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="family" id="family">
+        <div class="section-heading">
+            <h2>My Beautiful Family</h2>
+            <p>My favourite people and my greatest blessing. ❤️</p>
+        </div>
+
+        <div class="cards">
+            <div class="family-card">
+                <div class="icon">💖</div>
+                <h3>My Husband</h3>
+                <p>Varaprasad</p>
+                <p>A special part of my life and family journey.</p>
+            </div>
+
+            <div class="family-card">
+                <div class="icon">👧</div>
+                <h3>My Daughter</h3>
+                <p>Shanuu</p>
+                <p>A little bundle of love who makes life brighter.</p>
+            </div>
+
+            <div class="family-card">
+                <div class="icon">👨‍👩‍👧‍👦</div>
+                <h3>My Family</h3>
+                <p>My strength, happiness, and home.</p>
+                <p>Family is where love grows and memories last forever.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="quote">
+        <blockquote>
+            "A beautiful mind keeps learning,
+            a loving heart keeps giving,
+            and a determined woman keeps growing."
+        </blockquote>
+        <p>— Mamatha's little life philosophy 🌿</p>
+    </section>
+
+    <section class="message">
+        <div class="message-box">
+            <h2>To My Dear Sister 💛</h2>
+            <p>
+                You are not just my elder sister; you are someone
+                I admire for your many talents, your love for learning,
+                and your ability to care for the people around you.
+                Keep dreaming, keep learning, and keep shining.
+            </p>
+            <p style="margin-top: 18px; color: #176b65; font-weight: 600;">
+                You can be many things, follow many dreams,
+                and still be beautifully yourself.
+            </p>
+            <p style="margin-top: 15px;">With lots of love, your younger sister 💕</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>Made with ♡ for Mamatha and her beautiful world.</p>
+        <p>Keep learning. Keep creating. Keep shining. ✨</p>
+    </footer>
+
+</body>
+</html>
+```
